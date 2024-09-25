@@ -8,7 +8,7 @@ from PIL import Image
 st.set_page_config(page_title="Advanced Data Health Check", page_icon=":bar_chart:", layout="wide")
 
 # Load and display the logo
-logo = Image.open("assets/logo.png")  # Make sure to place your logo in the 'assets' folder
+logo = Image.open("Nice Icon 3 (1).png")  # Make sure to place your logo in the 'assets' folder
 st.sidebar.image(logo, use_column_width=True)
 
 st.sidebar.title("Upload your Data")
