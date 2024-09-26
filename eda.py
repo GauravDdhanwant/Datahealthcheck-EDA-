@@ -15,11 +15,13 @@ import os
 # Set up page config
 st.set_page_config(page_title="Advanced Data Health Check", page_icon=":bar_chart:", layout="wide")
 
-# Load and display the logo
-logo_path = "Nice Icon 3.png"
+# Try to load and display the logo
+logo_path = "assets/logo.png"
 if os.path.exists(logo_path):
     logo = Image.open(logo_path)
     st.sidebar.image(logo, use_column_width=True)
+else:
+    st.sidebar.write("Logo not found. Please ensure 'logo.png' is in the 'assets' directory.")
 
 st.sidebar.title("Upload your Data")
 uploaded_file = st.sidebar.file_uploader("Choose a CSV, Excel, or Parquet file", type=["csv", "xlsx", "parquet"])
@@ -42,6 +44,10 @@ if uploaded_file is not None:
         if df is not None:
             st.write("### Data Preview")
             st.dataframe(df.head())
+
+            # Clean the data
+            df = df.apply(pd.to_numeric, errors='coerce')  # Convert to numeric where possible
+            df.dropna(inplace=True)  # Drop rows with NaN values
 
             # Advanced EDA
             st.write("### Advanced Data Health Check")
