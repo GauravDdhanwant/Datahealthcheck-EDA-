@@ -16,7 +16,7 @@ import os
 st.set_page_config(page_title="Advanced Data Health Check", page_icon=":bar_chart:", layout="wide")
 
 # Try to load and display the logo
-logo_path = "assets/logo.png"
+logo_path = "Nice Icon 3.png"
 if os.path.exists(logo_path):
     logo = Image.open(logo_path)
     st.sidebar.image(logo, use_column_width=True)
